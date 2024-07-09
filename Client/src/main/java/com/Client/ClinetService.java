@@ -24,7 +24,6 @@ public class ClinetService {
                 .build();
 
         clientRepository.save(clienttoCretae);
-
         System.out.println("Client saved");
 
     }
@@ -32,7 +31,9 @@ public class ClinetService {
     public Client getClient(Long id) {
         return clientRepository.findById(id).orElseThrow();
     }
+
     public List<Client> getAllClients() {
         return clientRepository.findAll();
     }
+
 }
