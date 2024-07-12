@@ -39,6 +39,8 @@ public class ClientControllerTests {
     @Autowired
     private ObjectMapper objectMapper;
 
+
+
     @Test
     public void ClientController_createClient_returnCreated() throws Exception {
         ClientCreationRequest clientCreationRequest = ClientCreationRequest.builder()
