@@ -11,7 +11,15 @@ import lombok.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Client {
+
+    public Client(Long id, String email, String photo) {
+        this.id = id;
+        this.email = email;
+        this.photo = photo;
+    }
+
 
     @Id
     @GeneratedValue
@@ -23,6 +31,7 @@ public class Client {
     public String phone;
     public String address;
     public String photo;
+
 
 
 }

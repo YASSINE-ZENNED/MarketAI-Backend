@@ -12,12 +12,16 @@ public class ClinetService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public void saveClient(ClientCreationRequest client) {
+
+
+
+
+    public Client saveClient(ClientCreationRequest client) {
         Client clienttoCretae = Client.builder()
                 .name(client.name())
                 .email(client.email())
                 .password(client.password())
-                .address(client.address())
+                //.address(client.address())
                 .phone(client.phone())
                 .photo(client.photo())
 
@@ -25,6 +29,7 @@ public class ClinetService {
 
         clientRepository.save(clienttoCretae);
         System.out.println("Client saved");
+        return clienttoCretae;
 
     }
 

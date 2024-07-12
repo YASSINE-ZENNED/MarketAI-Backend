@@ -20,7 +20,6 @@ class ClinetServiceTest {
     @Autowired
     private ClientRepository clientRepository;
 
-
     @Test
    public void clientRepository_saveClient_ReturnSavedClient() {
 
@@ -97,5 +96,63 @@ class ClinetServiceTest {
 
 
     }
+
+    @Test
+    void clientRepository_GetClientByPhone_ReturnClient() {
+
+        Client clienttoCretae = Client.builder()
+                .id(1L)
+                .name("testClient")
+                .email("test@test.com")
+                .password("testPassword")
+                .address("testAddress")
+                .phone("28895395")
+                .photo("testPhoto.png")
+                .build();
+
+        Client savedClient = clientRepository.save(clienttoCretae);
+
+        Client client = clientRepository.findByPhone(clienttoCretae.getPhone()).get();
+
+        Assertions.assertNotNull(client);
+
+        Assertions.assertEquals(clienttoCretae.getName(), client.getName());
+
+        Assertions.assertEquals(clienttoCretae.getPhone(), client.getPhone());
+
+    }
+    @Test
+    void clientRepository_GetClientEmailAndPhoto_ReturnClientEmailandPhoto() {
+
+
+
+        Client clienttoCretae = Client.builder()
+                .id(1L)
+                .name("testClient")
+                .email("test@test.com")
+                .password("testPassword")
+                .address("testAddress")
+                .phone("28895395")
+                .photo("testPhoto.png")
+                .build();
+
+        Client savedClient = clientRepository.save(clienttoCretae);
+
+        Client client = clientRepository.GetClientEmailAndPhoto(1L).get();
+
+        Assertions.assertNotNull(client);
+
+        Assertions.assertEquals(clienttoCretae.getEmail(), client.getEmail());
+
+        Assertions.assertEquals(clienttoCretae.getPhoto(), client.getPhoto());
+
+        System.out.println("___________________________");
+        System.out.println(client);
+        System.out.println("___________________________");
+
+
+    }
+
+
 
 }
