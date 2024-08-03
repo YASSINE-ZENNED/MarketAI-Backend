@@ -1,4 +1,3 @@
 package com.Client;
 
-public class ClientMapper {
-}
+public class ClientMapper {}
