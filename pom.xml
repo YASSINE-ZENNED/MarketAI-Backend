@@ -13,7 +13,8 @@
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
   <modules>
-    <module>Client</module>
+      <module>Client</module>
+      <module>Item</module>
   </modules>
 
   <properties>
