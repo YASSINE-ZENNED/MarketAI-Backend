@@ -1,34 +1,28 @@
 package com.Client;
 
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Slf4j
-@RestController
+@RestController("/client")
 public class ClientController {
 
-    @Autowired
-    private ClinetService clientService;
+  @Autowired private ClientService clientService;
 
-    @GetMapping("/GetAllClients")
-    public List<Client> hello() {
-        return clientService.getAllClients();
+  @GetMapping("/")
+  public List<ClientEntity> hello() {
+    return clientService.getAllClients();
+  }
 
-    }
-
-
-
-    @PostMapping("/CreateClient")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Client> createClient(@RequestBody ClientCreationRequest request) {
-        log.info("Creating client with name: {}", request);
-        Client client = clientService.saveClient(request);
-        return new ResponseEntity<>(client, HttpStatus.CREATED);
-    }
-
+  @PostMapping("/")
+  @ResponseStatus(HttpStatus.CREATED)
+  public ResponseEntity<ClientEntity> createClient(@RequestBody ClientCreationRequest request) {
+    log.info("Creating client with name: {}", request);
+    ClientEntity clientEntity = clientService.saveClient(request);
+    return new ResponseEntity<>(clientEntity, HttpStatus.CREATED);
+  }
 }
