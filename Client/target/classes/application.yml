@@ -3,6 +3,7 @@ server:
 spring:
   application:
     name: Client
+    jwt_secret_key: 73FA6C1A99E2B814984BAC1698A5F
   datasource:
     password: root
     url: jdbc:postgresql://localhost:5432/MarketAIClient

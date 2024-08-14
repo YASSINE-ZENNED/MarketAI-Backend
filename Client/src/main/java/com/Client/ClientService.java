@@ -25,6 +25,17 @@ public class ClientService {
     return clientEntityToCreate;
   }
 
+  public boolean isClient(Long id) {
+    if (clientRepository.existsById(id)) {
+      ClientEntity client = clientRepository.findById(id).orElseThrow();
+      if(client.isAccountNonExpired() && client.isAccountNonLocked() && client.isCredentialsNonExpired() && client.isEnabled()) {
+        return true;
+      }
+
+    }
+     return false;
+  }
+
   public ClientEntity getClient(Long id) {
     return clientRepository.findById(id).orElseThrow();
   }

@@ -8,15 +8,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@RestController("/client")
+@RestController
+@RequestMapping("/client")
 public class ClientController {
 
-  @Autowired private ClientService clientService;
+  @Autowired
+  private ClientService clientService;
 
-  @GetMapping("/")
-  public List<ClientEntity> hello() {
-    return clientService.getAllClients();
-  }
+
+
+@GetMapping("/isClient")
+public boolean isClient(@RequestParam("id") Long id) {
+  return clientService.isClient(id);
+}
+
+@GetMapping("/")
+public List<ClientEntity> hello() {
+  return clientService.getAllClients();
+}
+
 
   @PostMapping("/")
   @ResponseStatus(HttpStatus.CREATED)
