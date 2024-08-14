@@ -15,17 +15,18 @@ public class ClientController {
   @Autowired
   private ClientService clientService;
 
-//  @GetMapping("/")
-//    public String getClient() {
-//    log.info("Hello");
-//    System.out.println("Hello");
-//        return "Hello";
-//    }
 
-  @GetMapping("/")
-  public List<ClientEntity> hello() {
-    return clientService.getAllClients();
-  }
+
+@GetMapping("/isClient")
+public boolean isClient(@RequestParam("id") Long id) {
+  return clientService.isClient(id);
+}
+
+@GetMapping("/")
+public List<ClientEntity> hello() {
+  return clientService.getAllClients();
+}
+
 
   @PostMapping("/")
   @ResponseStatus(HttpStatus.CREATED)
