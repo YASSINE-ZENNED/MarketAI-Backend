@@ -8,16 +8,16 @@ import jakarta.persistence.Id;
 import java.util.Collection;
 import java.util.List;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
 @Builder
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClientEntity implements UserDetails {
+public class ClientEntity  {
 
   public String name;
   public String email;
@@ -30,32 +30,32 @@ public class ClientEntity implements UserDetails {
   @Enumerated(EnumType.STRING)
   private ClientRole clientRole;
 
-  @Override
-  public Collection<? extends GrantedAuthority> getAuthorities() {
-    return List.of(new SimpleGrantedAuthority(clientRole.name()));
-  }
+//  @Override
+//  public Collection<? extends GrantedAuthority> getAuthorities() {
+//    return List.of(new SimpleGrantedAuthority(clientRole.name()));
+//  }
 
-  @Override
+//  @Override
   public String getUsername() {
     return name;
   }
 
-  @Override
+//  @Override
   public boolean isAccountNonExpired() {
     return true;
   }
 
-  @Override
+//  @Override
   public boolean isAccountNonLocked() {
-    return false;
+    return true;
   }
 
-  @Override
+//  @Override
   public boolean isCredentialsNonExpired() {
     return true;
   }
 
-  @Override
+//  @Override
   public boolean isEnabled() {
     return true;
   }

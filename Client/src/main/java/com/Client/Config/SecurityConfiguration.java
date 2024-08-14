@@ -13,6 +13,10 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfiguration {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity
+            .authorizeRequests()
+            .anyRequest().permitAll();
+
     return httpSecurity.build();
   }
 }
