@@ -13,6 +13,10 @@ public class ItemService {
 
 
     public Item CreateItem(Item item) {
+        if ( item.getSellerId()==null || item.getName()==null || item.getPrice()==null || item.getCategory()==null ){
+            throw new RuntimeException("not all required fields are filled in");
+        }
+
         return itemRepository.save(item);
     }
 
