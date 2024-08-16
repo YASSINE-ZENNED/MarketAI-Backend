@@ -17,6 +17,8 @@ public class CommentService {
         Item item = itemRepository.findById(commentDTO.getItemId())
                 .orElseThrow(() -> new RuntimeException("Item not found"));
 
+
+
         // Create a new Comment entity
         Comment comment = new Comment();
         comment.setItem(item);
@@ -27,4 +29,5 @@ public class CommentService {
         // Save the Comment entity to the database
         return commentRepository.save(comment);
     }
+
 }

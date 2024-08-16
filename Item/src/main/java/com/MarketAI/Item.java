@@ -3,10 +3,7 @@ package com.MarketAI;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -22,10 +19,14 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
+    private Long sellerId;
+
+    private Double price;
     private String name;
     private String description;
     private String keyFeatures;
-
+    private String category;
     @ElementCollection
     private List<String> photos;
 
