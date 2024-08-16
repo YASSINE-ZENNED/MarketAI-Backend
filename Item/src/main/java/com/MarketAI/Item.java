@@ -30,8 +30,7 @@ public class Item {
     private List<String> photos;
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference  // Manage the relationship
-
+//    @JsonManagedReference  // Manage the relationship
     private List<Comment> comments; // One-to-many relationship with Comment
 
 

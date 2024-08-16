@@ -1,16 +1,10 @@
 package com.MarketAI;
 
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
 
 import java.util.List;
-
 
 @Data
 @Builder
@@ -21,19 +15,16 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;  // Ensure this field is properly annotated
 
     @ManyToOne
-    @JoinColumn(name = "item_id", nullable = false) // Foreign key to Item
-    @JsonBackReference  // Prevent infinite loop
-    private Item item; // Changed to Item type
+    @JoinColumn(name = "item_id", nullable = false)
+    @JsonBackReference
+    private Item item;
 
     private Long clientId;
-
     private String text;
 
     @ElementCollection
     private List<String> photos;
-
-
 }
