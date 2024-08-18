@@ -36,7 +36,7 @@ public class ItemController {
     public Item createItem(@RequestBody Item item) {
 
         Message<String> message = MessageBuilder
-                .withPayload((item.getSellerId()+" "))
+                .withPayload((String.valueOf(item.getSellerId())))
                 .setHeader(KafkaHeaders.TOPIC, "clientValidationTopic")
                 .build();
 
@@ -44,6 +44,7 @@ public class ItemController {
         kafkaTemplate.send(message);
 
         return itemService.CreateItem(item);
+
     }
 
     @PutMapping("/{id}")
