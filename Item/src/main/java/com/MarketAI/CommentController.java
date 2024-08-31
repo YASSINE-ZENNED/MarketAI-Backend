@@ -11,6 +11,13 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    @GetMapping("/")
+    public ResponseEntity<Iterable<Comment>> getAllComments() {
+        Iterable<Comment> comments = commentService.getAllComments();
+        return ResponseEntity.ok(comments);
+    }
+
+
     @PostMapping
     public ResponseEntity<Comment> createComment(@RequestBody CommentDTO commentDTO) {
         Comment createdComment = commentService.createComment(commentDTO);

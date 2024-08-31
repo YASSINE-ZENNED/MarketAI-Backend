@@ -12,6 +12,10 @@ public class CommentService {
     @Autowired
     private ItemRepository itemRepository;
 
+    public Iterable<Comment> getAllComments() {
+        return commentRepository.findAll();
+    }
+
     public Comment createComment(CommentDTO commentDTO) {
         // Fetch the related Item
         Item item = itemRepository.findById(commentDTO.getItemId())

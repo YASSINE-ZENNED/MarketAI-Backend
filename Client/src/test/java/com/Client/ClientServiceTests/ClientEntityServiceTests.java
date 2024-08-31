@@ -1,6 +1,6 @@
 package com.Client.ClientServiceTests;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import com.Client.ClientCreationRequest;
 import com.Client.ClientEntity;
@@ -15,14 +15,14 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class ClientEntityServiceTests {
+class ClientServiceTests {
 
   @Mock private ClientRepository clientRepository;
 
   @InjectMocks private ClientService clientService;
 
   @Test
-  public void clientService_saveClient_ReturnSavedClient() {
+  void testSaveClient_ReturnSavedClient() {
 
     ClientCreationRequest clientCreationRequest =
         ClientCreationRequest.builder()
@@ -50,5 +50,7 @@ public class ClientEntityServiceTests {
     ClientEntity savedClientEntity = clientService.saveClient(clientCreationRequest);
 
     Assertions.assertNotNull(savedClientEntity);
+    Assertions.assertEquals(1L, savedClientEntity.getId());
+    Assertions.assertEquals("testClient", savedClientEntity.getName());
   }
 }
