@@ -1,6 +1,5 @@
 package com.MarketAI;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
@@ -27,6 +26,7 @@ public class Item {
     private String description;
     private String keyFeatures;
     private String category;
+    private Boolean isNew;
     @ElementCollection
     private List<String> photos;
 
