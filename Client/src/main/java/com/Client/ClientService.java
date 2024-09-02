@@ -36,6 +36,7 @@ public class ClientService {
      return false;
   }
 
+
   public ClientEntity getClient(Long id) {
     return clientRepository.findById(id).orElseThrow();
   }
