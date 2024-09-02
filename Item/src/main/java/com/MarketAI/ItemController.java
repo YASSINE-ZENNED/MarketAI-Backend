@@ -35,13 +35,13 @@ public class ItemController {
     @PostMapping("/")
     public Item createItem(@RequestBody Item item) {
 
-        Message<String> message = MessageBuilder
-                .withPayload((String.valueOf(item.getSellerId())))
-                .setHeader(KafkaHeaders.TOPIC, "clientValidationTopic")
-                .build();
+//        Message<String> message = MessageBuilder
+//                .withPayload((String.valueOf(item.getSellerId())))
+//                .setHeader(KafkaHeaders.TOPIC, "clientValidationTopic")
+//                .build();
 
 
-        kafkaTemplate.send(message);
+//        kafkaTemplate.send(message);
 
         return itemService.CreateItem(item);
 
